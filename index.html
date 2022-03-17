@@ -1,22 +1,46 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Hello, Luke!</title>
-	<link rel="icon" type="image/png" sizes="32x32" href="https://branch.io/img/favicon/favicon-32x32.png">
-    </head>
-    <body>
-        <h3>AppTest</h3>
-        <ul>
-            <li>Reporter: Luke An</li>
-            <li>Email: luke.an@scandit.com</li>
-        </ul>
-        <h3>Scandit Test</h3>
-        <ul>
-		      <li><input type="text" id="ebtest"></li>
-		      <li><input type="text" id="ebtest"></li>
-		
-	    </ul>
-    </body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="https://glitch.com/favicon.ico" />
+
+    <title>Hello world!</title>
+  
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <!-- import the webpage's javascript file -->
+    <script src="/script.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/scandit-sdk@5.x"></script>
+    <script>
+      function startScan() {
+        console.log("Scandit Scan Test");
+      ScanditSDK.configure("AelhVWK3Q/QqARqoEztBkSsu6zcXPYf4akbHxhEFxTCNTbNRplASLKtyd76sVUy/TXKX1DwUVnBteo26h3aBGyAnYMAGeM1aoV9RvmpTamAnSeZvnV1xSyR7jMkHVc4qF1gB4cp5gUgpQd5+qHCSNN9rnkTSHCJeMh7S1NoZewd0OpSBf3gLHZYsWYTXeaBldbA/6mvFUWr2i/Pr5i1JJpsRHcfhTDhJcgR6mEDT2CVBegvpBWFHiPPrJ9EdHupuoMApkmGl+xjV+CNj8WxHwzZXaEJFsw2GnYCQWxjW7iJLH2581/2YBkpurfgTOhZRla1bPHRAK1jrzGOCslOLVeCdEB8WvIRD/CIhkNHRCF8J6o3pIegm0WJ6OAj/tTjwzyNd6ZEdjGjm50lPWqopzFISIoYdmcjnSl2gaDEeFDJGr6w8sGcT4sdoAOgCTJYjT1Q8FMPJXEhPT1Ow77aW4Rll0ovyJ7LqYgomtVRmsn2kjbRBAx6zOAJhJbIxJY1KNMFslTPg4wHWHLJlGbdp23pcC01b5U3aVIY2Xiw+nEkQqZJrrabatFcCqNgamvmBflzJqEvp60/kQ0oB+OpDwLvIVaQRjEe/H8KpYYhgzOhIs0q4KoPKgfrWj8JcTsaY8D8PkB7a9q+hJPyee3vyoOO/KcFr6UGTlQX5txfEagZU0ax09z+HBb8NpXlVBJOVOWNokqdpyK4W+Vb7BTqWljWEPDAUh1Iapfr+Grg0UfHofn0+bC1Qob6q3ETbC75XeIMxiBO+7ZoxOblTphkIqHJ0pHLN0o6b0vXhXNKidonh/as02iC2Gs2vDe9PnzcRthK59O2hd+kG+w1hEvKtlCutf+pntdMYpr8nvM9V8JeM", {
+  engineLocation: "https://cdn.jsdelivr.net/npm/scandit-sdk@5.x/build/",
+})
+  .then(() => {
+    return ScanditSDK.BarcodePicker.create(document.getElementById("scandit-barcode-picker"), {
+      // enable some common symbologies
+      scanSettings: new ScanditSDK.ScanSettings({ enabledSymbologies: ["ean8", "ean13", "upca", "upce"] }),
+    });
+  })
+  .then((barcodePicker) => {
+    // barcodePicker is ready here, show a message every time a barcode is scanned
+    barcodePicker.on("scan", (scanResult) => {
+      alert(scanResult.barcodes[0].data);
+    });
+  });
+      }
+    </script>
+    
+  </head>
+  <body>
+    <!-- this is the start of content -->
+    <h1>
+      Scandit Barcode Scanner!
+    </h1>
+    <input type="button" value="Scan" onclick="startScan()">
+    <div id="scandit-barcode-picker"></div>
+  </body>
 </html>
