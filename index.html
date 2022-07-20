@@ -28,6 +28,8 @@
   .then((barcodePicker) => {
     // barcodePicker is ready here, show a message every time a barcode is scanned
     barcodePicker.on("scan", (scanResult) => {
+      console.log("scandit barcode scanned");
+      console.log(scanResult.barcodes[0].data);
       alert(scanResult.barcodes[0].data);
     });
   });
