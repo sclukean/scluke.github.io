@@ -22,7 +22,7 @@
   .then(() => {
     return ScanditSDK.BarcodePicker.create(document.getElementById("scandit-barcode-picker"), {
       // enable some common symbologies
-      scanSettings: new ScanditSDK.ScanSettings({ enabledSymbologies: ["ean8", "ean13", "upca", "upce"], searchArea: {"height": 0.3, "width": 1, "x": 0, "y":0} }),
+      scanSettings: new ScanditSDK.ScanSettings({ enabledSymbologies: ["ean8", "ean13", "upca", "upce"], searchArea: {"height": 0.3, "width": 0.3, "x": 0, "y":0} }),
     });
   })
   .then((barcodePicker) => {
